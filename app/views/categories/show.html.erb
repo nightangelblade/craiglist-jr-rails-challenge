@@ -1,2 +1,10 @@
 <%= link_to "All Categories", categories_path %>
 <h2><%= @category.name %></h2>
+
+<table>
+<% @articles.each do |article| %>
+<tr>
+<td><%= link_to "#{article.title}", category_article_path(article) %></td>
+</tr>
+<% end %>
+</table>

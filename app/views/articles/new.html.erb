@@ -1,0 +1,26 @@
+<h1>Create a New Article</h1>
+<%= form_for [@category, @article] do |f| %>
+<p>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+</p>
+
+<p>
+  <%= f.label :description %>
+  <%= f.text_field :description, "size" => 150 %>
+</p>
+
+<p>
+  <%= f.label :price %>
+  <%= f.number_field :price %>
+</p>
+
+<p>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+</p>
+
+<p>
+  <%= f.submit %>
+</p>
+<% end %>
