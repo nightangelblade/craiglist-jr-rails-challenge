@@ -1,4 +1,10 @@
 <%= link_to "All Categories", categories_path %>
+<% if current_user %>
+  <p><%= link_to "Create a new article", new_category_article_path(@category) %></p>
+  <p><%= link_to "Logout", logout_path %></p>
+<% else %>
+  <p>You aren't signed in, would you like to <%= link_to "login", login_path %> or <%= link_to "sign up", signup_path %>?</p>
+<% end %>
 <h2><%= @category.name %></h2>
 
 <table>
