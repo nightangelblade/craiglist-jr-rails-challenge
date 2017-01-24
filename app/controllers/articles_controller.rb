@@ -1,11 +1,10 @@
 class ArticlesController < ApplicationController
+  before_filter :authorize, except: :show
 
   def show
     @article = Article.find(params[:id])
     @category = @article.category.id
   end
-
-  before_filter :authorize
 
   def new
     @category = Category.find(params[:category_id])

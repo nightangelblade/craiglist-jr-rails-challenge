@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_filter :authorize, except: [:index, :show]
 
   def index
     @categories = Category.all
@@ -8,8 +9,6 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     @articles = @category.articles
   end
-
-  before_filter :authorize
 
   def new
     @category = Category.new
@@ -24,7 +23,6 @@ class CategoriesController < ApplicationController
       render new_category_path
     end
   end
-
 
   private
   def category_params
