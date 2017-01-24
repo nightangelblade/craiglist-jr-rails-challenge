@@ -9,6 +9,8 @@ class CategoriesController < ApplicationController
     @articles = @category.articles
   end
 
+  before_filter :authorize
+
   def new
     @category = Category.new
   end

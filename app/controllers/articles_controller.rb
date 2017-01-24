@@ -5,13 +5,15 @@ class ArticlesController < ApplicationController
     @category = @article.category.id
   end
 
+  before_filter :authorize
+
   def new
     @category = Category.find(params[:category_id])
     @article = @category.articles.new
   end
 
   def edit
-
+    @article = Article.find(params[:id])
   end
 
   def create
@@ -27,7 +29,13 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    @article = Article.find(params[:id])
 
+    if @article.save
+      redirect_to category_path(@category)
+    else
+      render new_category_article_path
+    end
   end
 
   private
