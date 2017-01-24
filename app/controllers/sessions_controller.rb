@@ -17,6 +17,6 @@ class SessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to login_path
+    redirect_to categories_path
   end
 end

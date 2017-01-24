@@ -1,3 +1,9 @@
+<% if current_user %>
+  <p><%= link_to "Create a new category", new_category_path %></p>
+  <p><%= link_to "Logout", logout_path %></p>
+<% else %>
+  <p>You aren't signed in, would you like to <%= link_to "login", login_path %> or <%= link_to "sign up", signup_path %>?</p>
+<% end %>
 <h1>All Categories</h1>
 <table>
 <% @categories.each do |category| %>
@@ -7,4 +13,3 @@
 <% end %>
 </table>
 
-<p><%= link_to "Create a new category", new_category_path %></p>
