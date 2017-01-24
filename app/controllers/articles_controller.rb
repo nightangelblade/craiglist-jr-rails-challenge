@@ -2,8 +2,8 @@ class ArticlesController < ApplicationController
   before_filter :authorize, except: :show
 
   def show
+    @category = Category.find(params[:category_id])
     @article = Article.find(params[:id])
-    @category = @article.category.id
   end
 
   def new
@@ -12,6 +12,7 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    @category = Category.find(params[:category_id])
     @article = Article.find(params[:id])
   end
 
@@ -30,11 +31,17 @@ class ArticlesController < ApplicationController
   def update
     @article = Article.find(params[:id])
 
-    if @article.save
-      redirect_to category_path(@category)
+    if @article.update(article_params)
+      redirect_to category_article_path(@article)
     else
-      render new_category_article_path
+      render edit_category_article_path
     end
+  end
+
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+    redirect_to category_path
   end
 
   private

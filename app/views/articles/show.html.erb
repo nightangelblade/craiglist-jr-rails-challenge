@@ -1,5 +1,8 @@
-<%= link_to "Back to Category", category_path(@category) %>
+<p><%= link_to "Back to Category", category_path(@category) %></p>
 <h2><%= @article.title %></h2>
 <p><%= @article.description %></p>
 <p><%= @article.price %></p>
 <p><%= @article.email %></p>
+
+<p><%= link_to "Edit", edit_category_article_path(@article) %></p>
+<p><%= link_to "Delete", category_article_path(@article), method: :delete, data: {confirm: 'Are you sure?'} %></p>
